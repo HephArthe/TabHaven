@@ -1,5 +1,9 @@
 const save = document.getElementById("save");
 const workspacesDiv = document.getElementById("workspaces")
+const create = document.getElementById("create")
+const main = document.getElementById("main")
+const space = document.getElementById("create-workspace")
+const spacename = document.getElementById("workspace-name")
 
 chrome.runtime.sendMessage({action: "get"}, (response) => {
     const names = Object.keys(response.workspaces || {});
@@ -21,7 +25,6 @@ chrome.runtime.sendMessage({action: "get"}, (response) => {
             })
         }
         div.onclick= function() {
-                console.log("cliquei")
                 chrome.runtime.sendMessage({action : "select", name})
             }
         div.append(p);
@@ -31,7 +34,15 @@ chrome.runtime.sendMessage({action: "get"}, (response) => {
 })
 
 save.onclick = function() {
-    chrome.runtime.sendMessage({action: "save"}, (response) => {
+    main.classList.add("hidden");
+    create.classList.remove("hidden");
+}
+
+
+space.onclick = function() {
+    create.classList.add("hidden");
+    const namespace = spacename.value || "Workspace";
+    chrome.runtime.sendMessage({action: "save", name: namespace}, (response) => {
     const names = Object.keys(response.workspaces || {});
     document.querySelectorAll(".workspace-item").forEach(el => el.remove());
     names.forEach((name) => {
@@ -46,7 +57,6 @@ save.onclick = function() {
         button.onclick = function(e) {
             e.stopPropagation();
             chrome.runtime.sendMessage({action : "delete", name}, (resp) => {
-                console.log(resp.workspaces || {})
                 button.parentElement.remove()
             })
         }
@@ -59,4 +69,6 @@ save.onclick = function() {
         workspacesDiv.appendChild(div);
         })
     })
+    main.classList.remove("hidden");
+    spacename.value = "";
 }

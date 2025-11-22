@@ -11,10 +11,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       const tabsUrls = tabs.map(tab => tab.url);
       chrome.storage.local.get("workspaces", (data) => {
         var workspaces = data.workspaces || {}
-        workspaces["workspace"+i] = tabsUrls
-        names.push("workspace"+i++)
+        workspaces[message.name] = tabsUrls
+        names.push(message.name)
         chrome.storage.local.set({workspaces}, () => {
-          console.log(workspaces)
         })
         sendResponse({workspaces})
       })
@@ -28,7 +27,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       names = names.filter(n => n !== name);
       delete workspaces[name]
       chrome.storage.local.set({workspaces}, () => {
-        console.log(workspaces)
       })
       sendResponse({workspaces});
     })

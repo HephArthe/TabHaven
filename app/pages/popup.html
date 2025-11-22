@@ -10,11 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1 id="main">Workspacess</h1>
-    <div id = "workspaces"></div>
-    <button id = "save">
-        Save
-    </button>
+    <div id = "main">
+        <h1 id="tabhab">TabHab</h1>
+        <div id = "workspaces"></div>
+        <button id = "save">
+            New Workspace
+        </button>
+    </div>
+    <div id = "create" class = "hidden">
+        <h2>Create New Workspace</h2>
+        <input type="text" id="workspace-name" placeholder="Workspace Name"/>
+        <button id="create-workspace">Create</button>
+    </div>
     <script src="../scripts/popup.js"></script>
 </body>
 </html>
