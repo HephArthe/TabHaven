@@ -23,3 +23,5 @@ Thumbs.db
 
 # Ignore IDE/editor specific files (VSCode)
 .vscode/
+
+.github/copilot-instructions.md
