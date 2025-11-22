@@ -1,0 +1,25 @@
+# Ignore node_modules if you have it
+node_modules/
+
+# Ignore build output (if any)
+dist/
+build/
+
+# Ignore source maps
+*.map
+
+# Ignore Sass compiled files if you don't use them directly
+*.scss
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+*.log
+
+# Ignore environment files
+.env
+
+# Ignore IDE/editor specific files (VSCode)
+.vscode/
