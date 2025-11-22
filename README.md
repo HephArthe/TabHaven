@@ -22,7 +22,7 @@ TabHaven is **not yet available on the Chrome Web Store**. To install locally:
 
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/yourusername/tabhaven.git
+   git clone https://github.com/HephArthe/TabHaven.git
    ```
 2. Open your browser’s extension manager (for example, `chrome://extensions` or `brave://extensions`).
 3. Enable **Developer mode**.  
